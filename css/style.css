@@ -1,0 +1,16 @@
+body{
+    font-family: sans-serif;
+}
+.aboutfilm{
+    display: flex;
+    flex-direction: row;
+}
+img{
+    width: 200px;
+    height: auto;
+    padding-left: 40px;
+}
+#message{
+    height: 40px;
+    width: 100%;
+}

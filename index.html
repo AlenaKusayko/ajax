@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценка фильма</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(document).on('click', '.raiting a', function(){
+                let href=$(this).attr('href');
+                let querystring = href.slice(href.indexOf('?')+1);
+
+                $.get('raiting.php', querystring, function(data){
+                let newHTML;
+                newHTML = '<h2>Ваш голос учтен</h2>';
+                newHTML+= '<p>Средний рейтинг для этого фильма составляет';
+                newHTML+= data + '.</p>';
+                $('#message').html(newHTML);
+                console.log(data);        
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Оцените этот фильм</h1>
+    <div class="aboutfilm">
+        <div class="raiting">
+             <p>Щелкните, чтобы проголосовать</p>
+             <a href="raiting.php?rate=1&movie=holop">1 star</a><br>
+             <a href="raiting.php?rate=2&movie=holop">2 star</a><br>  
+             <a href="raiting.php?rate=3&movie=holop">3 star</a><br>
+             <a href="raiting.php?rate=4&movie=holop">4 star</a><br>
+             <a href="raiting.php?rate=5&movie=holop">5 star</a><br>
+        </div>
+        <img src="img/foto.jpg" alt="poster">
+    </div>
+    <div id="message"></div>
+</body>
+</html>    
